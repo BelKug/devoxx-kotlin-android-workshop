@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class BeersAdapter(var beers: List<String>, var listener: Listener) : BaseAdapter() {
+class BeersAdapter(var beers: List<String>,
+                   val itemClick: (String) -> Unit) : BaseAdapter() {
 
     init {
         notifyDataSetChanged()
@@ -21,11 +22,11 @@ class BeersAdapter(var beers: List<String>, var listener: Listener) : BaseAdapte
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
         val beer = getItem(i)
         val rowView = view ?: LayoutInflater.from(viewGroup.context).inflate(R.layout.view_beer_item, viewGroup, false)
-            rowView.findViewById<TextView>(R.id.beer_item_label).apply {
-                text = beer
-            }
+        rowView.findViewById<TextView>(R.id.beer_item_label).apply {
+            text = beer
+        }
 
-        rowView.setOnClickListener { listener.onBeerClicked(beer) }
+        rowView.setOnClickListener { itemClick(beer) }
 
         return rowView
     }
@@ -33,10 +34,6 @@ class BeersAdapter(var beers: List<String>, var listener: Listener) : BaseAdapte
     fun updateBeers(newBeers: List<String>) {
         beers = newBeers
         notifyDataSetChanged()
-    }
-
-    interface Listener {
-        fun onBeerClicked(beer: String)
     }
 
 }

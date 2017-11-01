@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 
 class BeersActivity : AppCompatActivity() {
 
@@ -16,7 +17,9 @@ class BeersActivity : AppCompatActivity() {
 
     init {
         val beers = listOf<String>("Duvel", "Westmalle", "Rochefort")
-        adapter = BeersAdapter(beers)
+        adapter = BeersAdapter(
+                beers,
+                itemClick = { beer -> showBeer(beer) })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +30,11 @@ class BeersActivity : AppCompatActivity() {
         toolbar.title = "Beers at Devoxx"
         loadingView.visibility = View.GONE
 
-        // Add list adapter
-        list.apply {
-            val beers = listOf<String>("Duvel", "Westmalle", "Rochefort")
-            adapter = BeersAdapter(beers, BeersAdapter.Listener() )
-        }
+        list.adapter = adapter
+    }
 
+    fun showBeer(beer: String){
+        Toast.makeText(this, beer, Toast.LENGTH_SHORT).show()
     }
 }
 
