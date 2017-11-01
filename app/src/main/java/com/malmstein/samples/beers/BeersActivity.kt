@@ -18,7 +18,7 @@ class BeersActivity : AppCompatActivity() {
         val beers = listOf<String>("Duvel", "Westmalle", "Rochefort")
         adapter = BeersAdapter(
                 beers,
-                itemClick = { beer -> toast(beer) })
+                itemClick = { beer -> open(beer) })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +30,10 @@ class BeersActivity : AppCompatActivity() {
         loadingView.visibility = View.GONE
 
         list.adapter = adapter
+    }
+
+    fun open(beer: String) {
+        toast(beer).also { BeerDetailActivity.open(this) }
     }
 
 }
