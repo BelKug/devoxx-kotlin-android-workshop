@@ -8,9 +8,9 @@ import android.widget.ListView
 
 class BeersActivity : AppCompatActivity() {
 
-    val toolbar: Toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
-    val list: ListView by lazy { findViewById<ListView>(R.id.beers_list) }
-    val loadingView: View by lazy { findViewById<View>(R.id.beers_loading_view) }
+    val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
+    val list: ListView by lazy { find<ListView>(R.id.beers_list) }
+    val loadingView: View by lazy { find<View>(R.id.beers_loading_view) }
 
     val adapter: BeersAdapter
 
