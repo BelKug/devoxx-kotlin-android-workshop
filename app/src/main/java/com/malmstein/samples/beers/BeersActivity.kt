@@ -30,7 +30,7 @@ class BeersActivity : AppCompatActivity() {
         // Add list adapter
         list.apply {
             val beers = listOf<String>("Duvel", "Westmalle", "Rochefort")
-            adapter = BeersAdapter(beers)
+            adapter = BeersAdapter(beers, BeersAdapter.Listener() )
         }
 
     }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class BeersAdapter(var beers: List<String>) : BaseAdapter() {
+class BeersAdapter(var beers: List<String>, var listener: Listener) : BaseAdapter() {
 
     init {
         notifyDataSetChanged()
@@ -24,12 +24,19 @@ class BeersAdapter(var beers: List<String>) : BaseAdapter() {
             rowView.findViewById<TextView>(R.id.beer_item_label).apply {
                 text = beer
             }
+
+        rowView.setOnClickListener { listener.onBeerClicked(beer) }
+
         return rowView
     }
 
     fun updateBeers(newBeers: List<String>) {
         beers = newBeers
         notifyDataSetChanged()
+    }
+
+    interface Listener {
+        fun onBeerClicked(beer: String)
     }
 
 }

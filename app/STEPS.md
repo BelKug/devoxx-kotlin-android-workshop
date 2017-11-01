@@ -2,16 +2,14 @@
     - Toolbar
     - Presenter
 
-2. Operator overload
-    - ViewGroup
+2. Lambda extensions (Adapter with onClick)
+3. Companion object (Start activity)
 
 3. Functions
     - Infix functions
     - Inline functions
 
-4. Lambda extensions (Adapter with onClick)
 5. Object (Singleton Beers repository)
-6. Companion object (Start activity)
 7. Object (Singleton Beers repository)
 8. Invoking functions (GetBeers use case from presenter)
 9. Sealed classes (ViewState from presenter -> when(state))
@@ -23,8 +21,11 @@ fun String shouldBeEqualsTo(value: String) = this == value
 val output = "Hello"
 output shouldBeEqualsTo "Hello"
 
+13. Operator overload
+    - ViewGroup
 
-11. Coroutines
+
+14. Coroutines
 
 let / apply / with
 show method().also()
