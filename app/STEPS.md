@@ -1,15 +1,9 @@
-1. Lazy initialization
-    - Toolbar
-    - Presenter
-
+1. Lazy initialization (views, adapter)
 2. Lambda extensions (Adapter with onClick)
-3. Companion object (Start activity)
-
-3. Functions
-    - Infix functions
-    - Inline functions
-
-5. Object (Singleton Beers repository)
+3. Extension functions
+4. Inline functions
+5. Companion object (Start activity)
+6. Object (Singleton Beers repository)
 7. Object (Singleton Beers repository)
 8. Invoking functions (GetBeers use case from presenter)
 9. Sealed classes (ViewState from presenter -> when(state))
