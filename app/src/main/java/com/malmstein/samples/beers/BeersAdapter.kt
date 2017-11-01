@@ -4,8 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 
 class BeersAdapter(var beers: List<String>) : BaseAdapter() {
+
+    init {
+        notifyDataSetChanged()
+    }
 
     override fun getCount() = beers.size
 
@@ -14,9 +19,11 @@ class BeersAdapter(var beers: List<String>) : BaseAdapter() {
     override fun getItemId(i: Int) = i.toLong()
 
     override fun getView(i: Int, view: View?, viewGroup: ViewGroup): View {
-        val suggestion = getItem(i)
+        val beer = getItem(i)
         val rowView = view ?: LayoutInflater.from(viewGroup.context).inflate(R.layout.view_beer_item, viewGroup, false)
-
+            rowView.findViewById<TextView>(R.id.beer_item_label).apply {
+                text = beer
+            }
         return rowView
     }
 

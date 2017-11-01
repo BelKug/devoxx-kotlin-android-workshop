@@ -5,15 +5,15 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginStart="16dp"
+    android:padding="16dp"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/suggestion_item_label"
+        android:id="@+id/beer_item_label"
         style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="wrap_content"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         tools:text="This is just a beer" />
