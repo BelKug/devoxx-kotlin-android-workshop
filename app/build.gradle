@@ -26,6 +26,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
 }
 
 dependencies {
@@ -34,4 +40,5 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
 
     testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "com.nhaarman:mockito-kotlin-kt1.1:$mockitoKotlinVersion"
 }

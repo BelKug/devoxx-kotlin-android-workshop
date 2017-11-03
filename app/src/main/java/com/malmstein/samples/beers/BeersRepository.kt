@@ -1,6 +1,7 @@
 package com.malmstein.samples.beers
 
 data class Beer(val name: String, val trappist: Boolean)
+infix fun Beer.isTheSameAs(value: Beer) = this == value
 
 interface BeersRepository {
     fun getAll(): List<Beer>;

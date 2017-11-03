@@ -12,5 +12,6 @@ ext {
     supportLibraryVersion = '26.1.0'
 
     jUnitVersion = '4.12'
+    mockitoKotlinVersion = "1.5.0"
 
 }
