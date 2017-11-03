@@ -1,16 +1,25 @@
 package com.malmstein.samples.beers
 
-data class Beer(val name: String)
+data class Beer(val name: String, val trappist: Boolean)
 
 interface BeersRepository {
     fun getAll(): List<Beer>;
+    fun getTrappist(): List<Beer>;
 }
 
-class BeersDataRepository: BeersRepository {
+object BeersDataRepository : BeersRepository {
+
+    val beers = listOf<Beer>(
+            Beer("Jupiler", false),
+            Beer("Westmalle", true),
+            Beer("Rochefort 8", true))
 
     override fun getAll(): List<Beer> {
-        val beers = listOf<Beer>(Beer("Duvel"), Beer("Westmalle"), Beer("Rochefort"))
         return beers
+    }
+
+    override fun getTrappist(): List<Beer> {
+        return beers.filter { it.trappist == true }
     }
 
 }

@@ -16,7 +16,7 @@ class BeersActivity : AppCompatActivity(), BeersView {
     val presenter: BeersPresenter
 
     init {
-        presenter = BeersPresenter(this)
+        presenter = BeersPresenter(this, BeersDataRepository)
         adapter = BeersAdapter(
                 emptyList(),
                 itemClick = { beer -> open(beer) })
