@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class BeersAdapter(var beers: List<String>,
-                   val itemClick: (String) -> Unit) : BaseAdapter() {
+class BeersAdapter(var beers: List<Beer>,
+                   val itemClick: (Beer) -> Unit) : BaseAdapter() {
 
     init {
         notifyDataSetChanged()
@@ -23,7 +23,7 @@ class BeersAdapter(var beers: List<String>,
         val beer = getItem(i)
         val rowView = view ?: LayoutInflater.from(viewGroup.context).inflate(R.layout.view_beer_item, viewGroup, false)
         rowView.findViewById<TextView>(R.id.beer_item_label).apply {
-            text = beer
+            text = beer.name
         }
 
         rowView.setOnClickListener { itemClick(beer) }
@@ -31,7 +31,7 @@ class BeersAdapter(var beers: List<String>,
         return rowView
     }
 
-    fun updateBeers(newBeers: List<String>) {
+    fun updateBeers(newBeers: List<Beer>) {
         beers = newBeers
         notifyDataSetChanged()
     }
