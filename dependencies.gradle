@@ -11,6 +11,10 @@ ext {
 
     supportLibraryVersion = '26.1.0'
 
+    retrofitVersion = '2.3.0'
+    okHttpVersion = '3.9.0'
+    moshiVersion = '1.5.0'
+
     jUnitVersion = '4.12'
     mockitoKotlinVersion = "1.5.0"
 

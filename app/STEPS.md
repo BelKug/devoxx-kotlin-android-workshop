@@ -8,9 +8,7 @@
 8. Infix functions for testing
 9. Invoking functions (GetBeers use case from presenter)
 10. Property delegation
-11. Operator overload
-    - ViewGroup
-12. Coroutines
+11. Coroutines
 
 let / apply / with
 show method().also()
