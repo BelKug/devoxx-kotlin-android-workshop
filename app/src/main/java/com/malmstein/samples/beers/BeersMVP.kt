@@ -13,11 +13,11 @@ interface ViewCallback {
     fun render(state: ViewState)
 }
 
-class BeersPresenter(val view: ViewCallback, val repository: BeersRepository) {
+class BeersPresenter(val view: ViewCallback, val getBeersUseCase: GetBeersUseCase) {
 
     fun showBeers() {
         view.render(ViewState.Loading)
-        val beers = repository.getAll()
+        val beers = getBeersUseCase()
         view.render(BeersViewState.Beers(beers))
     }
 
