@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ListView
 
-class BeersActivity : AppCompatActivity(), BeersView {
+class BeersActivity : AppCompatActivity(), ViewCallback {
 
     val toolbar: Toolbar by lazy { find<Toolbar>(R.id.toolbar) }
     val list: ListView by lazy { find<ListView>(R.id.beers_list) }
@@ -39,11 +39,26 @@ class BeersActivity : AppCompatActivity(), BeersView {
         toast(beer.name).also { BeerDetailActivity.open(this) }
     }
 
-    override fun onBeers(beers: List<Beer>) {
+    override fun render(state: ViewState) {
+        when(state){
+            is ViewState.Loading -> onLoading()
+            is ViewState.Error -> onError(state.exception)
+            is BeersViewState.Beers -> onBeers(state.beers)
+        }
+    }
+
+    private fun onLoading() {
+        loadingView.visibility = View.VISIBLE
+        list.visibility = View.GONE
+    }
+
+    fun onBeers(beers: List<Beer>) {
+        loadingView.visibility = View.GONE
+        list.visibility = View.VISIBLE
         adapter.updateBeers(beers)
     }
 
-    override fun onError(exception: Exception) {
+    fun onError(exception: Exception) {
         toast(exception.localizedMessage)
     }
 

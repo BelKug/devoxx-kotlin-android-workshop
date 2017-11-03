@@ -4,8 +4,8 @@
 4. Inline functions (Inline reified for Activity findViewById)
 5. Companion object (Start activity)
 6. Object (Singleton Beers repository)
-7. Invoking functions (GetBeers use case from presenter)
-8. Sealed classes (ViewState from presenter -> when(state))
+7. Sealed classes (ViewState from presenter -> when(state))
+8. Invoking functions (GetBeers use case from presenter)
 9. Property delegation
 10. infix functions for testing (only applicable to extensions / member functions with single parameters
 fun String shouldBeEqualsTo(value: String) = this == value
