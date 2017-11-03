@@ -3,6 +3,7 @@ package com.malmstein.samples.beers
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -31,6 +32,6 @@ class BeerPresenterTest {
         verify(viewCallback).render(ViewState.Loading)
         verify(viewCallback).render(BeersViewState.Beers(beers))
 
-        assert(beers[0] isTheSameAs (beers[1]))
+        assertTrue(beers[0] isTheSameAs (beers[1]))
     }
 }
