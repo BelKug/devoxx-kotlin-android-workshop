@@ -13,10 +13,9 @@ class BeersActivity : AppCompatActivity(), ViewCallback {
     val loadingView: View by lazy { find<View>(R.id.beers_loading_view) }
 
     val adapter: BeersAdapter
-    val presenter: BeersPresenter
+    val presenter: BeersPresenter by Injector.getBeersPresenter(this)
 
     init {
-        presenter = BeersPresenter(this, GetBeersUseCase(BeersDataRepository))
         adapter = BeersAdapter(
                 emptyList(),
                 itemClick = { beer -> open(beer) })

@@ -1,6 +1,9 @@
 package com.malmstein.samples.beers
 
-data class Beer(val name: String, val trappist: Boolean)
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
+
+data class Beer(val name: String, var trappist: Boolean )
 infix fun Beer.isTheSameAs(value: Beer) = this == value
 
 interface BeersRepository {
@@ -9,6 +12,8 @@ interface BeersRepository {
 }
 
 object BeersDataRepository : BeersRepository {
+
+    var isOnline: Boolean by NetworkDelegate()
 
     val beers = listOf<Beer>(
             Beer("Jupiler", false),
@@ -23,4 +28,14 @@ object BeersDataRepository : BeersRepository {
         return beers.filter { it.trappist == true }
     }
 
+}
+
+class NetworkDelegate : ReadWriteProperty<Any?, Boolean> {
+
+    override fun getValue(thisRef: Any?, property: KProperty<*>): Boolean {
+        return true
+    }
+
+    override fun setValue(thisRef: Any?, property: KProperty<*>, value: Boolean) {
+    }
 }
