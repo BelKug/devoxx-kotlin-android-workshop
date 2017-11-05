@@ -8,6 +8,7 @@
 8. Infix functions for testing
 9. Invoking functions (GetBeers use case from presenter)
 10. Property delegation
+<<<<<<< HEAD
 11. Coroutines
     - Launch vs Await
     - Launch two jobs
@@ -19,3 +20,6 @@ let / apply / with
 show method().also()
 reified
 anonymous functions?
+=======
+11. Coroutines
+>>>>>>> 19_coroutines_start
