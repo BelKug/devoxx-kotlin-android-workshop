@@ -11,12 +11,15 @@ interface BeersApiService {
     @GET("beers")
     fun beers(): Call<List<Beer>>
 
+    @GET("beertypes")
+    fun beerTypes(): Call<List<BeerType>>
+
     @GET("beers/{beerId}")
     fun beerById(@Path("beerId") beerId: Int): Call<Beer>
 
     companion object Factory {
 
-        val BASE_URL = "http://10.1.1.166:8080/api/"
+        val BASE_URL = "http://192.168.0.212:8080/api/"
 
         fun create(): BeersApiService {
 

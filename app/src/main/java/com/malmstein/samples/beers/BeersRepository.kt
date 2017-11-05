@@ -1,31 +1,37 @@
 package com.malmstein.samples.beers
 
+import ru.gildor.coroutines.retrofit.awaitResult
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-data class Beer(val name: String, var trappist: Boolean )
+data class Brewery(val id: Long, val breweryName: String)
+data class BeerType(val id: Long, val beerType: String, val beerJudgeCertification: String)
+data class Beer(val id: Long, val beerName: String,
+                val alcoholPercentage: Double, val beerColour: String,
+                val beerType: BeerType, val brewery: Brewery)
+
 infix fun Beer.isTheSameAs(value: Beer) = this == value
 
 interface BeersRepository {
-    fun getAll(): List<Beer>;
-    fun getTrappist(): List<Beer>;
+    suspend fun getAll(): List<Beer>;
 }
 
 object BeersDataRepository : BeersRepository {
 
     var isOnline: Boolean by NetworkDelegate()
-
-    val beers = listOf<Beer>(
-            Beer("Jupiler", false),
-            Beer("Westmalle", true),
-            Beer("Rochefort 8", true))
-
-    override fun getAll(): List<Beer> {
-        return beers
+    val api: BeersApiService by lazy {
+        BeersApiService.create()
     }
 
-    override fun getTrappist(): List<Beer> {
-        return beers.filter { it.trappist == true }
+    suspend override fun getAll(): List<Beer> {
+        api
+                .beers()
+                .awaitResult()
+                .ifSucceeded { value -> return value }
+                .ifFailed { return@ifFailed }
+                .ifError fail@ { error -> return@fail }
+
+        return emptyList()
     }
 
 }

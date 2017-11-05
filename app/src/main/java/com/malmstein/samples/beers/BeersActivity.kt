@@ -35,15 +35,13 @@ class BeersActivity : AppCompatActivity(), ViewCallback {
     }
 
     fun open(beer: Beer) {
-        toast(beer.name).also { BeerDetailActivity.open(this) }
+        toast(beer.beerName).also { BeerDetailActivity.open(this) }
     }
 
-    override fun render(state: ViewState) {
-        when(state){
-            is ViewState.Loading -> onLoading()
-            is ViewState.Error -> onError(state.exception)
-            is BeersViewState.Beers -> onBeers(state.beers)
-        }
+    override fun render(state: ViewState) = when (state) {
+        is ViewState.Loading -> onLoading()
+        is ViewState.Error -> onError(state.exception)
+        is BeersViewState.Beers -> onBeers(state.beers)
     }
 
     private fun onLoading() {

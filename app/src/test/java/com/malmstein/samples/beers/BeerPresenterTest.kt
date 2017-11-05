@@ -3,6 +3,8 @@ package com.malmstein.samples.beers
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import kotlinx.coroutines.experimental.Unconfined
+import kotlinx.coroutines.experimental.async
 import org.junit.Before
 import org.junit.Test
 
@@ -20,17 +22,15 @@ class BeerPresenterTest {
 
     @Test fun `renders beers in view`() {
 
-        val beers = listOf<Beer>(
-                Beer("Jupiler", false),
-                Beer("Westmalle", true),
-                Beer("Rochefort 8", true))
+        async(Unconfined) {
+            whenever(repository.getAll()).thenReturn(emptyList())
+            presenter.showBeers()
 
-        whenever(repository.getAll()).thenReturn(beers)
+            verify(viewCallback).render(ViewState.Loading)
+            verify(viewCallback).render(BeersViewState.Beers(emptyList()))
 
-        presenter.showBeers()
+        }
 
-        verify(viewCallback).render(ViewState.Loading)
-        verify(viewCallback).render(BeersViewState.Beers(beers))
 
     }
 }

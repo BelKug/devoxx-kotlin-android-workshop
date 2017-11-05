@@ -9,6 +9,11 @@
 9. Invoking functions (GetBeers use case from presenter)
 10. Property delegation
 11. Coroutines
+    - Launch vs Await
+    - Launch two jobs
+    - Cancel a coroutine
+    - Launch with timeout
+    - Error handling
 
 let / apply / with
 show method().also()
