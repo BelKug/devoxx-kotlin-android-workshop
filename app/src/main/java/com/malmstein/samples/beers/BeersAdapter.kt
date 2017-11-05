@@ -23,7 +23,7 @@ class BeersAdapter(var beers: List<Beer>,
         val beer = getItem(i)
         val rowView = view ?: LayoutInflater.from(viewGroup.context).inflate(R.layout.view_beer_item, viewGroup, false)
         rowView.findViewById<TextView>(R.id.beer_item_label).apply {
-            text = beer.name
+            text = beer.beerName
         }
 
         rowView.setOnClickListener { itemClick(beer) }

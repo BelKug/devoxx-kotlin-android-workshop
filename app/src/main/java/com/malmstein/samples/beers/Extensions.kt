@@ -10,3 +10,4 @@ fun Activity.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
 }
 
 inline fun <reified T : View> Activity.find(id: Int): T = findViewById<T>(id) as T
+

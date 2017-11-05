@@ -16,7 +16,7 @@ interface BeersApiService {
 
     companion object Factory {
 
-        val BASE_URL = "http://localhost:8080/api/"
+        val BASE_URL = "http://10.1.1.166:8080/api/"
 
         fun create(): BeersApiService {
 
