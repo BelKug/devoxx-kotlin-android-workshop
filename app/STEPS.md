@@ -9,8 +9,3 @@
 9. Invoking functions (GetBeers use case from presenter)
 10. Property delegation
 11. Coroutines
-
-let / apply / with
-show method().also()
-reified
-anonymous functions?
